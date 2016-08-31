@@ -21,6 +21,13 @@
 #include <zcmd>
 #include <single_player_info_boxes>
 
+// ** MAIN
+
+main()
+{
+	print("Loaded \"single_player_info_boxes_example.amx\".");
+}
+
 // ** CALLBACKS
 
 public OnGameModeInit()
