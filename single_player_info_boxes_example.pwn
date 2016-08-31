@@ -23,12 +23,12 @@
 
 // ** CALLBACKS
 
-public OnFilterScriptInit()
+public OnGameModeInit()
 {
 	return 1;
 }
 
-public OnFilterScriptExit()
+public OnGameModeExit()
 {
 	return 1;
 }
