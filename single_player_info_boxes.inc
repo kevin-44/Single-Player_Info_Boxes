@@ -27,28 +27,28 @@
 
 // **** TIMERS
 
-static tmInfoBox[MAX_PLAYERS];
+static ptmInfoBox[MAX_PLAYERS];
 
 // **** TEXTDRAWS
 
-static PlayerText:ptInfoBox[MAX_PLAYERS];
+static PlayerText:ptdInfoBox[MAX_PLAYERS];
 
 // ** CALLBACKS
 
 public OnPlayerConnect(playerid)
 {
-	ptInfoBox[playerid] = CreatePlayerTextDraw(playerid, 38.000000, 132.000000, "");
-	PlayerTextDrawBackgroundColor(playerid, ptInfoBox[playerid], 255);
-	PlayerTextDrawFont(playerid, ptInfoBox[playerid], 1);
-	PlayerTextDrawLetterSize(playerid, ptInfoBox[playerid], 0.429999, 1.400000);
-	PlayerTextDrawColor(playerid, ptInfoBox[playerid], -1);
-	PlayerTextDrawSetOutline(playerid, ptInfoBox[playerid], 0);
-	PlayerTextDrawSetProportional(playerid, ptInfoBox[playerid], 1);
-	PlayerTextDrawSetShadow(playerid, ptInfoBox[playerid], 1);
-	PlayerTextDrawUseBox(playerid, ptInfoBox[playerid], 1);
-	PlayerTextDrawBoxColor(playerid, ptInfoBox[playerid], 255);
-	PlayerTextDrawTextSize(playerid, ptInfoBox[playerid], 219.000000, 30.000000);
-	PlayerTextDrawSetSelectable(playerid, ptInfoBox[playerid], 0);
+	ptdInfoBox[playerid] = CreatePlayerTextDraw(playerid, 38.000000, 132.000000, "");
+	PlayerTextDrawBackgroundColor(playerid, ptdInfoBox[playerid], 255);
+	PlayerTextDrawFont(playerid, ptdInfoBox[playerid], 1);
+	PlayerTextDrawLetterSize(playerid, ptdInfoBox[playerid], 0.429999, 1.400000);
+	PlayerTextDrawColor(playerid, ptdInfoBox[playerid], -1);
+	PlayerTextDrawSetOutline(playerid, ptdInfoBox[playerid], 0);
+	PlayerTextDrawSetProportional(playerid, ptdInfoBox[playerid], 1);
+	PlayerTextDrawSetShadow(playerid, ptdInfoBox[playerid], 1);
+	PlayerTextDrawUseBox(playerid, ptdInfoBox[playerid], 1);
+	PlayerTextDrawBoxColor(playerid, ptdInfoBox[playerid], 255);
+	PlayerTextDrawTextSize(playerid, ptdInfoBox[playerid], 219.000000, 30.000000);
+	PlayerTextDrawSetSelectable(playerid, ptdInfoBox[playerid], 0);
 
 	#if defined spib_OnPlayerConnect
 		return spib_OnPlayerConnect(playerid);
@@ -73,18 +73,18 @@ public OnPlayerConnect(playerid)
 
 stock ShowInfoBox(playerid, box_color, shown_for, text[])
 {
-	PlayerTextDrawBoxColor(playerid, ptInfoBox[playerid], box_color);
-	PlayerTextDrawSetString(playerid, ptInfoBox[playerid], text);
-	PlayerTextDrawShow(playerid, ptInfoBox[playerid]);
+	PlayerTextDrawBoxColor(playerid, ptdInfoBox[playerid], box_color);
+	PlayerTextDrawSetString(playerid, ptdInfoBox[playerid], text);
+	PlayerTextDrawShow(playerid, ptdInfoBox[playerid]);
 
-	KillTimer(tmInfoBox[playerid]);
-	tmInfoBox[playerid] = SetTimerEx("HideInfoBox", (1000 * shown_for), false, "i", playerid);
+	KillTimer(ptmInfoBox[playerid]);
+	ptmInfoBox[playerid] = SetTimerEx("HideInfoBox", (1000 * shown_for), false, "i", playerid);
 	return 1;
 }
 
 forward HideInfoBox(playerid);
 public HideInfoBox(playerid)
 {
-	PlayerTextDrawHide(playerid, ptInfoBox[playerid]);
+	PlayerTextDrawHide(playerid, ptdInfoBox[playerid]);
 	return 1;
 }
